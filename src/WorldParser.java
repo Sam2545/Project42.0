@@ -162,6 +162,9 @@ public class WorldParser {
             return switch (key) {
                 case Dude.DUDE_KEY -> parseDude(specificProperties, id, position, imageLibrary);
                 case Fairy.FAIRY_KEY -> parseFairy(specificProperties, id, position, imageLibrary);
+                case Doctor.DOCTOR_KEY -> parseDoctor(specificProperties, id, position, imageLibrary);
+                case Soldier.SOLDIER_KEY -> parseSoldier(specificProperties, id, position, imageLibrary);
+                case Grave.GRAVE_KEY -> parseGrave(specificProperties, position, id, imageLibrary);
                 case House.HOUSE_KEY -> parseHouse(specificProperties, id, position, imageLibrary);
                 case Mushroom.MUSHROOM_KEY -> parseMushroom(specificProperties, id, position, imageLibrary);
                 case Water.WATER_KEY -> parseWater(specificProperties, id, position, imageLibrary);
@@ -224,6 +227,51 @@ public class WorldParser {
             ));
         }
     }
+    private static Entity parseSoldier(String[] properties, String id, Point position, ImageLibrary imageLibrary) {
+        if (properties.length == Soldier.SOLDIER_PARSE_PROPERTY_COUNT) {
+
+            // Modify to use a constructor from your class hierarchy
+            // Ensure the order of all passed arguments match the desired parameters
+            return new Soldier(
+                    id,
+                    position,
+                    imageLibrary.get(Soldier.SOLDIER_KEY),
+                    Double.parseDouble(properties[Soldier.SOLDIER_PARSE_PROPERTY_ANIMATION_PERIOD_INDEX]),
+                    Double.parseDouble(properties[Soldier.SOLDIER_PARSE_PROPERTY_BEHAVIOR_PERIOD_INDEX])
+            );
+
+        } else {
+            throw new IllegalArgumentException(String.format(
+                    "%s requires %d properties when parsing, got %d",
+                    Soldier.SOLDIER_KEY,
+                    Soldier.SOLDIER_PARSE_PROPERTY_COUNT,
+                    properties.length
+            ));
+        }
+    }
+    private static Entity parseDoctor(String[] properties, String id, Point position, ImageLibrary imageLibrary) {
+        if (properties.length == Doctor.DOCTOR_PARSE_PROPERTY_COUNT) {
+
+            // Modify to use a constructor from your class hierarchy
+            // Ensure the order of all passed arguments match the desired parameters
+            return new Doctor(
+                    id,
+                    position,
+                    imageLibrary.get(Doctor.DOCTOR_KEY),
+                    Double.parseDouble(properties[Doctor.DOCTOR_PARSE_PROPERTY_ANIMATION_PERIOD_INDEX]),
+                    Double.parseDouble(properties[Doctor.DOCTOR_PARSE_PROPERTY_BEHAVIOR_PERIOD_INDEX])
+            );
+
+        } else {
+            throw new IllegalArgumentException(String.format(
+                    "%s requires %d properties when parsing, got %d",
+                    Doctor.DOCTOR_KEY,
+                    Doctor.DOCTOR_PARSE_PROPERTY_COUNT,
+                    properties.length
+            ));
+        }
+    }
+
 
     /** Parses a line of Mushroom data. */
     private static Entity parseMushroom(String[] properties, String id, Point position, ImageLibrary imageLibrary) {
@@ -307,6 +355,26 @@ public class WorldParser {
                     "%s requires %d properties when parsing, got %d",
                     Stump.STUMP_KEY,
                     Stump.STUMP_PARSE_PROPERTY_COUNT,
+                    properties.length
+            ));
+        }
+    }
+    private static Entity parseGrave(String[] properties, Point pt, String id, ImageLibrary imageLibrary) {
+        if (properties.length == Grave.GRAVE_PARSE_PROPERTY_COUNT) {
+
+            // Modify this to use a constructor from your class hierarchy
+            // Ensure the order of all passed arguments match the desired parameters
+            return new Grave(
+                    id,
+                    pt,
+                    imageLibrary.get(Grave.GRAVE_KEY)
+            );
+
+        } else {
+            throw new IllegalArgumentException(String.format(
+                    "%s requires %d properties when parsing, got %d",
+                    Grave.GRAVE_KEY,
+                    Grave.GRAVE_PARSE_PROPERTY_COUNT,
                     properties.length
             ));
         }

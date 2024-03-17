@@ -1,5 +1,6 @@
 import java.util.*;
 
+import com.sun.source.doctree.DocTree;
 import processing.core.*;
 
 public final class VirtualWorld extends PApplet {
@@ -133,6 +134,33 @@ public final class VirtualWorld extends PApplet {
             if (entity.log() != null) {
                 System.out.println(entity.log());
             }
+        }
+        else{
+            Soldier soldier = new Soldier(Soldier.SOLDIER_KEY, pressed, imageLibrary.get(Soldier.SOLDIER_KEY), 1, 1);
+            world.addEntity(soldier);
+            soldier.scheduleActions(scheduler, world, imageLibrary);
+            Set<Entity> entities = new HashSet<Entity>();
+            for(Entity entity : world.getEntities()) {
+                entities.add(entity);
+            }
+            for(Entity entity : entities){
+                if(entity instanceof House){
+                    Point position = entity.getPosition();
+                    Point nextToHouse = new Point(position.x + 1, position.y);
+                    Doctor doctor;
+                    if((world.isOccupied(nextToHouse))){
+                        doctor = new Doctor(Doctor.DOCTOR_KEY, new Point(position.x, position.y-1), imageLibrary.get(Doctor.DOCTOR_KEY), 1, 1);
+                    }
+                    else{
+                        doctor = new Doctor(Doctor.DOCTOR_KEY, new Point(position.x, position.y+1), imageLibrary.get(Doctor.DOCTOR_KEY), 1, 1);
+                    }
+                    world.addEntity(doctor);
+                    doctor.scheduleActions(scheduler, world, imageLibrary);
+                }
+            }
+            /*Doctor doctor = new Doctor(Doctor.DOCTOR_KEY, new Point(pressed.x-1, pressed.y+1), imageLibrary.get(Doctor.DOCTOR_KEY), 1, 1);
+            world.addEntity(doctor);
+            doctor.scheduleActions(scheduler, world, imageLibrary);*/
         }
     }
 

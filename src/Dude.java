@@ -171,4 +171,5 @@ public class Dude extends AnimationActor implements Transform, Repositionable{
 
         return getPosition();
     }
+
 }
