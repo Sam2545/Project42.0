@@ -1,6 +1,5 @@
 import java.util.*;
 
-import com.sun.source.doctree.DocTree;
 import processing.core.*;
 
 public final class VirtualWorld extends PApplet {
@@ -135,11 +134,11 @@ public final class VirtualWorld extends PApplet {
                 System.out.println(entity.log());
             }
         }
-        else{
-            Soldier soldier = new Soldier(Soldier.SOLDIER_KEY, pressed, imageLibrary.get(Soldier.SOLDIER_KEY), 0.3, 1);
+        else {
+            Soldier soldier = new Soldier(Soldier.SOLDIER_KEY, pressed, imageLibrary.get(Soldier.SOLDIER_KEY), 0.4, 1);
             world.addEntity(soldier);
             soldier.scheduleActions(scheduler, world, imageLibrary);
-            Set<Entity> entities = new HashSet<>();
+            Set<Entity> entities = new HashSet<Entity>();
             for(Entity entity : world.getEntities()) {
                 entities.add(entity);
             }
@@ -158,10 +157,19 @@ public final class VirtualWorld extends PApplet {
                     doctor.scheduleActions(scheduler, world, imageLibrary);
                 }
             }
-            /*Doctor doctor = new Doctor(Doctor.DOCTOR_KEY, new Point(pressed.x-1, pressed.y+1), imageLibrary.get(Doctor.DOCTOR_KEY), 1, 1);
-            world.addEntity(doctor);
-            doctor.scheduleActions(scheduler, world, imageLibrary);*/
+            Farmer entity = new Farmer(
+                    Farmer.FARMER_KEY,
+                    new Point(4, 2),
+                    imageLibrary.get(Dude.DUDE_KEY),
+                    1,
+                    1,
+                    0,
+                    Farmer.FARMER_PARSE_PROPERTY_RESOURCE_LIMIT_INDEX);
+            world.addEntity(entity);
+            entity.scheduleActions(scheduler, world, imageLibrary);
         }
+
+
     }
 
     /** Converts mouse position to world position. */

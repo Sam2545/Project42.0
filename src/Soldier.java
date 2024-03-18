@@ -33,7 +33,7 @@ public class Soldier extends AnimationActor implements Repositionable{
 
         if (soldierTarget.isPresent()) {
             Point tgtPos = soldierTarget.get().getPosition();
-            Background background = new Background("grass_mushrooms", imageLibrary.get("grass_mushrooms"), 0);
+            Background background = new Background("stone", imageLibrary.get("stone"), 0);
             world.setBackgroundCell(getPosition(), background);
             if (moveToTarget(world, soldierTarget.get(), scheduler)) {
                 Entity grave = new Grave(Grave.GRAVE_KEY + "_" + soldierTarget.get().getId(), tgtPos, imageLibrary.get(Grave.GRAVE_KEY));
@@ -93,4 +93,3 @@ public class Soldier extends AnimationActor implements Repositionable{
         return getPosition();
     }
 }
-

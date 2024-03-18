@@ -65,33 +65,6 @@ public class Fairy extends AnimationActor implements Repositionable{
     @Override
     /** Determines a Fairy's next position when moving. */
     public Point nextPositionTarget(World world, Point destination) {
-        /*// Differences between the destination and current position along each axis
-        int deltaX = destination.x - getPosition().x;
-        int deltaY = destination.y - getPosition().y;
-
-        // Positions one step toward the destination along each axis
-        Point horizontalPosition = new Point(getPosition().x + Integer.signum(deltaX), getPosition().y);
-        Point verticalPosition = new Point(getPosition().x, getPosition().y + Integer.signum(deltaY));
-
-        // Assumes all destinations are within bounds of the world
-        // If this is not the case, also check 'World.withinBounds()'
-        boolean horizontalOccupied = world.isOccupied(horizontalPosition);
-        boolean verticalOccupied = world.isOccupied(verticalPosition);
-
-        // Move along the farther direction, preferring horizontal
-        if (Math.abs(deltaX) >= Math.abs(deltaY)) {
-            if (!horizontalOccupied) {
-                return horizontalPosition;
-            } else if (!verticalOccupied) {
-                return verticalPosition;
-            }
-        } else {
-            if (!verticalOccupied) {
-                return verticalPosition;
-            } else if (!horizontalOccupied) {
-                return horizontalPosition;
-            }
-        }*/
 
         PathingStrategy pathingStrategy = new AStarPathingStrategy();
 
