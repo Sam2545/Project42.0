@@ -1,6 +1,7 @@
 grass images/grass.png
 grass_flowers images/grass_flowers.png
 grass_mushrooms images/grass_mushrooms.png
+destruction images/slot_eq_cursed.png
 grass_path_left images/grass_path_left.png
 grass_path_right images/grass_path_right.png
 grass_path_bottom images/grass_path_bottom.png
@@ -48,3 +49,11 @@ tree images/tree2.png
 tree images/tree3.png
 tree images/tree4.png
 tree images/tree5.png
+soldier images/soldierrotate1.png
+soldier images/soldierresized.png
+soldier images/soldierrotate3.png
+grave images/graveresized.png
+doctor images/rotateangel1.png
+doctor images/realangel.png
+doctor images/rotateangel2.png
+stone images/stone2_brown3.png
