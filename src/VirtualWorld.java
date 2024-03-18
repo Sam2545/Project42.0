@@ -136,10 +136,10 @@ public final class VirtualWorld extends PApplet {
             }
         }
         else{
-            Soldier soldier = new Soldier(Soldier.SOLDIER_KEY, pressed, imageLibrary.get(Soldier.SOLDIER_KEY), 1, 1);
+            Soldier soldier = new Soldier(Soldier.SOLDIER_KEY, pressed, imageLibrary.get(Soldier.SOLDIER_KEY), 0.3, 1);
             world.addEntity(soldier);
             soldier.scheduleActions(scheduler, world, imageLibrary);
-            Set<Entity> entities = new HashSet<Entity>();
+            Set<Entity> entities = new HashSet<>();
             for(Entity entity : world.getEntities()) {
                 entities.add(entity);
             }
@@ -149,10 +149,10 @@ public final class VirtualWorld extends PApplet {
                     Point nextToHouse = new Point(position.x + 1, position.y);
                     Doctor doctor;
                     if((world.isOccupied(nextToHouse))){
-                        doctor = new Doctor(Doctor.DOCTOR_KEY, new Point(position.x, position.y-1), imageLibrary.get(Doctor.DOCTOR_KEY), 1, 1);
+                        doctor = new Doctor(Doctor.DOCTOR_KEY, new Point(position.x, position.y-1), imageLibrary.get(Doctor.DOCTOR_KEY), 0.3, 1);
                     }
                     else{
-                        doctor = new Doctor(Doctor.DOCTOR_KEY, new Point(position.x, position.y+1), imageLibrary.get(Doctor.DOCTOR_KEY), 1, 1);
+                        doctor = new Doctor(Doctor.DOCTOR_KEY, new Point(position.x, position.y+1), imageLibrary.get(Doctor.DOCTOR_KEY), 0.3, 1);
                     }
                     world.addEntity(doctor);
                     doctor.scheduleActions(scheduler, world, imageLibrary);
