@@ -55,7 +55,8 @@ public class Farmer extends AnimationActor implements Repositionable{
 
                 Background background = new Background("grass", imageLibrary.get("grass"), 0);
                 world.setBackgroundCell(tgtPos, background);
-                if ((int)(Math.random() * 3) == 0) {
+                if (!world.isOccupied(tgtPos) && (int)(Math.random() * 3) == 0) {
+
                     Entity sapling = new Sapling(Sapling.SAPLING_KEY + "_stump_", tgtPos, imageLibrary.get(Sapling.SAPLING_KEY));
 
                     world.addEntity(sapling);

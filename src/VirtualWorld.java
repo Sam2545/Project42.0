@@ -160,16 +160,14 @@ public final class VirtualWorld extends PApplet {
             Farmer entity = new Farmer(
                     Farmer.FARMER_KEY,
                     new Point(4, 2),
-                    imageLibrary.get(Dude.DUDE_KEY),
-                    1,
+                    imageLibrary.get(Farmer.FARMER_KEY),
+                    0.4,
                     1,
                     0,
                     Farmer.FARMER_PARSE_PROPERTY_RESOURCE_LIMIT_INDEX);
             world.addEntity(entity);
             entity.scheduleActions(scheduler, world, imageLibrary);
         }
-
-
     }
 
     /** Converts mouse position to world position. */
